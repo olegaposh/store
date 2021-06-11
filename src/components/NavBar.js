@@ -22,10 +22,10 @@ https://www.iconfinder.com/Makoto_msk  */}
                     </Link>
                 </li>
             </ul>
-            <Link to="/cart" className="ml-auto">
+            <Link to="/cart" className="ms-auto">
                 <ButtonContainer>
                     
-                    <span className="justify-content-end">
+                    <span className="me-1">
                         <i className="fas fa-cart-plus" />
                     </span>
                     my cart
