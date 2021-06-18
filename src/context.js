@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { storeProducts, detailProduct } from './data';
 
+const ProductContext = React.createContext();
+//Provider
+//Consumer
 
-function ProductList() {
+class ProductProvider extends Component {
 
-    const [products, setProducts] = useState(storeProducts)
+    state = {
+        products: storeProducts,
+        detailProduct: detailProduct
+    }
+    handleDetail = () => {
+        console.log('hello from detail');
+    }
+    addToCart = () => {
+        console.log('hello from cart');
+    }
+    render() {
 
-    // useEffect(() => {
-    //     setProducts(storeProducts)
-        
-    //   }, [])
-    
-      console.log(products)
+        return (
+            <ProductContext.Provider
+                value={{
+                    // products: this.state.products
+                    ...this.state,
+                    handleDetail: this.handleDetail,
+                    addToCart: this.addToCart
+                }}
+            >
 
-    return (
-        <>
-            <div className="py-5">
-                <div className="container">
-                <Title name="our products" />
-                    <div className="row">
+                {this.props.children}
 
-                    </div>
-                </div>
-            </div>
-            {/* <Product /> */}
-        </>
-    )
+            </ProductContext.Provider>
+        )
+    }
 }
 
+const ProductConsumer = ProductContext.Consumer;
 
-export default ProductList;
+
+export { ProductProvider, ProductConsumer };

@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product';
 import Title from './Title';
-import {storeProducts} from '../data'
+import { ProductConsumer } from '../context';
 
 function ProductList() {
 
-    const [products, setProducts] = useState(storeProducts)
+    // const [products, setProducts] = useState(storeProducts)
 
     // useEffect(() => {
     //     setProducts(storeProducts)
-        
+
     //   }, [])
-    
-      console.log(products)
+
+    // console.log(products)
 
     return (
         <>
             <div className="py-5">
                 <div className="container">
-                <Title name="our products" />
+                    <Title name="our products" />
+
                     <div className="row">
+                        <ProductConsumer>
+                            {(value) => {console.log(value)
+                                return value.products.map( product => {
+                                    return <Product key={product.id} product=
+                                    {product} />;
+                                });
+                            }}
+                        </ProductConsumer>
 
                     </div>
                 </div>
             </div>
-            {/* <Product /> */}
         </>
     )
 }
