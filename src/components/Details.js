@@ -44,9 +44,10 @@ const Details = () => {
                                 {/* buttons */}
                                 <div>
                                     <Link to="/">
-                                        <ButtonContainer>back to products</ButtonContainer>
+                                        <ButtonContainer className="m-3">back to products</ButtonContainer>
                                     </Link>
                                     <ButtonContainer 
+                                    cart
                                     disabled={inCart ? true: false}
                                     onClick={()=>{
                                         value.addToCart(id)
